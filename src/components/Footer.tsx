@@ -1,94 +1,122 @@
-import { Facebook, Instagram, Twitter, Linkedin, Github } from 'lucide-react'
+import { 
+  Facebook, 
+  Twitter, 
+  Instagram, 
+  Linkedin, 
+  Github, 
+  ArrowRight 
+} from 'lucide-react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
 
-export function Footer() {
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="bg-background border-t">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-          {/* Logo and description */}
-          <div className="col-span-2">
-            <div className="flex items-center mb-4">
-              <div className="h-8 w-8 rounded-md bg-primary flex items-center justify-center mr-2">
-                <span className="text-white text-sm">TF</span>
-              </div>
-              <span className="text-xl font-bold">TaskFlow</span>
-            </div>
-            <p className="text-muted-foreground mb-4 max-w-md">
-              TaskFlow helps teams organize, track, and manage their work efficiently. Streamline your workflow and boost productivity.
+    <footer className="bg-muted/50 border-t">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="space-y-4">
+            <div className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 text-transparent bg-clip-text">Stellar</div>
+            <p className="text-muted-foreground">
+              Building the future of web development with beautiful UI components and powerful tools.
             </p>
             <div className="flex space-x-4">
-              <SocialIcon icon={Twitter} />
-              <SocialIcon icon={Facebook} />
-              <SocialIcon icon={Instagram} />
-              <SocialIcon icon={Linkedin} />
-              <SocialIcon icon={Github} />
+              <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
+                <Facebook size={20} />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
+                <Twitter size={20} />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
+                <Linkedin size={20} />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
+                <Github size={20} />
+              </a>
             </div>
           </div>
           
-          {/* Links */}
           <div>
-            <h3 className="font-medium mb-4">Product</h3>
+            <h3 className="font-semibold text-lg mb-4">Product</h3>
             <ul className="space-y-2">
-              {['Features', 'Integrations', 'Pricing', 'Changelog', 'Roadmap'].map((item) => (
-                <FooterLink key={item} label={item} />
-              ))}
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Features</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Pricing</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Marketplace</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Integrations</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Changelog</a>
+              </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-medium mb-4">Resources</h3>
+            <h3 className="font-semibold text-lg mb-4">Company</h3>
             <ul className="space-y-2">
-              {['Documentation', 'Guides', 'API Reference', 'Community', 'Templates'].map((item) => (
-                <FooterLink key={item} label={item} />
-              ))}
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">About</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Careers</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Contact</a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">Partners</a>
+              </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-medium mb-4">Company</h3>
-            <ul className="space-y-2">
-              {['About', 'Blog', 'Careers', 'Contact', 'Legal'].map((item) => (
-                <FooterLink key={item} label={item} />
-              ))}
-            </ul>
+            <h3 className="font-semibold text-lg mb-4">Subscribe</h3>
+            <p className="text-muted-foreground mb-4">
+              Subscribe to our newsletter for updates about new features and releases.
+            </p>
+            <div className="flex gap-2">
+              <Input 
+                type="email" 
+                placeholder="Enter your email"
+                className="bg-background"
+              />
+              <Button variant="default" className="bg-indigo-600 hover:bg-indigo-700">
+                <ArrowRight size={18} />
+              </Button>
+            </div>
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} TaskFlow. All rights reserved.
-          </p>
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <span className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
-            </span>
-            <span className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <div className="mt-12 pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-muted-foreground text-sm">
+            © {currentYear} Stellar. All rights reserved.
+          </div>
+          <div className="flex gap-6 text-sm">
+            <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
               Terms of Service
-            </span>
-            <span className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-indigo-600 transition-colors">
               Cookies
-            </span>
+            </a>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
-
-function SocialIcon({ icon: Icon }) {
-  return (
-    <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-      <Icon className="h-5 w-5" />
-    </a>
-  )
-}
-
-function FooterLink({ label }) {
-  return (
-    <li>
-      <a href="#" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-        {label}
-      </a>
-    </li>
-  )
+  );
 }
